@@ -12,6 +12,3 @@ cd ./apoli
 cd ..
 ./gradlew
 ./gradlew remapJar
-
-# i'll send the jar in discord, but dumping the sha256 hash in the pipeline means people can verify it
-sha256sum build/libs/Origins-1.20.1-1.10.0.jar
