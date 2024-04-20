@@ -4,6 +4,9 @@ on:
   push:
     branches: [ '1.20.1-1.10.0-greasy' ]
 
+env:
+  OUTPUT_JAR_FILE: 'Origins-1.20.1-1.10.0.jar'
+
 jobs:
   build:
     name: 'Build lib & main JAR'
@@ -19,3 +22,7 @@ jobs:
           cache: 'gradle'
       - name: Run custom build script
         run: ./build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.OUTPUT_JAR_FILE }}
+          path: build/libs/${{ env.OUTPUT_JAR_FILE }}
