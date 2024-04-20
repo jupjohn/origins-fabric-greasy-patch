@@ -1,0 +1,21 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [ '1.20.1-1.10.0-greasy' ]
+
+jobs:
+  build:
+    name: 'Build lib & main JAR'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+      - name: Run custom build script
+        run: ./build.sh
